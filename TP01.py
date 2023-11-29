@@ -60,8 +60,8 @@ def data_to_json(txt:str) :
     global PRONOMS
     path = "./data.json"
     txt = txt.lower()
-    pronoms = {key:txt.lower().count(f' {key} ') for key in PRONOMS}
-    letter_e = txt.lower().count('e')
+    pronoms = {key:txt.count(f' {key} ') for key in PRONOMS}
+    letter_e = txt.count('e')
     data = {"nombre pronom":pronoms,"nombre e":letter_e}
 
     with open(path,'w') as file :
