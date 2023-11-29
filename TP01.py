@@ -17,7 +17,6 @@ def remplacer_par_e(mot): #prend en argument un mot
         if v>freqMax:
             freqMax=v
             a_remplacer=k
-    print(a_remplacer)
 
     resultat = '' #on initialise un résultat
     for lettre in mot: #pour chaque lettre du mot
@@ -53,7 +52,7 @@ print("\nnombre de chaque lettres",nombre_de_chaque_lettres(mot))
 def countInText(txt):
     countStringLe = txt.lower().count(' le ')
     countLetterE = txt.lower().count('e')
-    newTxt = txt.replace('e', ' ').replace('E',' ')
+    newTxt = txt.replace('e', '').replace('E','')
     return countStringLe, countLetterE, newTxt
 
 def data_to_json(txt:str) :
