@@ -3,7 +3,7 @@ from pronoms import PRONOMS
 
 def nombre_de_chaque_lettres(mot): #prend en argument un mot
     compteur = {}   #on initialise un dictionaire vide
-    for letter in mot: #pour chaque lettre du mot
+    for letter in set(mot): #pour chaque lettre du mot
         compteur[letter] = mot.count(letter) #on enregistre le nombre d'occurence de la lettre
     return compteur #on renvoie le nombre
 
