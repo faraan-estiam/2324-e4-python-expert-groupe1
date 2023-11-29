@@ -64,4 +64,3 @@ PRONOMS = ''.join(PRONOMS.lower().split(':')[1::2])
 PRONOMS = PRONOMS.replace(';',',').replace('\n',',')
 PRONOMS = filter(lambda word: word!='', PRONOMS.split(','))
 PRONOMS = [str.strip(word) for word in PRONOMS]
-print(PRONOMS)

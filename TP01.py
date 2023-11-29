@@ -12,11 +12,12 @@ def remplacer_par_e(mot): #prend en argument un mot
     nblettres = nombre_de_chaque_lettres(mot)
     freqMax=0
     a_remplacer=''
-    
-    for k,v in nblettres.items:
+
+    for k,v in nblettres.items():
         if v>freqMax:
             freqMax=v
             a_remplacer=k
+    print(a_remplacer)
 
     resultat = '' #on initialise un résultat
     for lettre in mot: #pour chaque lettre du mot
