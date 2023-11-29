@@ -1,5 +1,5 @@
 #Faraan Rozbully; Lucas Cannizzaro; Nathan Schoepps; Matéo Oudart; Akbar Khan
-PRONOMS = 'je, me, moi, tu, te, toi, il, elle, on, le, la, lui, eux, leur, nous, vous, se, soi, en, y'.split(', ')
+from pronoms import PRONOMS
 
 def nombre_de_chaque_lettres(mot): #prend en argument un mot
     compteur = {}   #on initialise un dictionaire vide
