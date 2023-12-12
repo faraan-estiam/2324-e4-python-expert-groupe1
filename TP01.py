@@ -21,6 +21,8 @@ q5=lambda txt:(lambda data:list(filter(lambda key:False not in[data[key]>=val fo
 # 6. (facultatif ) Quel est le mot le plus utilisé dans le texte en dehors des pronons.
 q6=lambda txt:(lambda data:list(filter(lambda key:False not in[data[key]>=val for val in data.values()],data)))((lambda newtxt:{word:newtxt.count(word)for word in filter(lambda word:word not in 'je, me, moi, tu, te, toi, il, elle, on, le, la, lui, eux, leur, nous, vous, se, soi, en, y'.split(', '),set(newtxt))})(txt.lower().translate(str.maketrans("'"," ",".,()")).split()))
 
+# 7. Créez des couples de deux valeurs.
+q7=lambda l,d:[tuple(l[i:len(l)])if len(l)-i<2*d else tuple(l[i:i+d])for i in range(0,len(l)+1-d,d)]
 
 
 word='mississippi'
@@ -51,3 +53,5 @@ print("voir q4.json pour la question 4")
 q4(txt)
 print("les mots les plus fréquents",q5(txt))
 print("les mots les plus fréquents sauf pronoms", q6(txt))
+elems = ['a', 'b', 'c', 'a', 'b', 'a', 'd', 'e']
+print("grouper la liste par deux", q7(elems,2))
