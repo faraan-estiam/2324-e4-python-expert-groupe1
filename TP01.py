@@ -93,6 +93,19 @@ def mot_les_plus_frequent_nopronouns(txt:str):
     #on renvoie ceux qui reviennent le plus souvent ainsi que leur nombre d'occurence
     freq = max(data.values())
     return list(filter(lambda key: data[key]==freq ,data)), freq
+
+def grouper_par_binome(l):          # prend en argument une liste l
+    resultat = []
+    for i in range(0,len(l)-1,2):   # i prendra les valeurs suivantes : [0,2,4,...,len(l)-1]
+        binome = (l[i],l[i+1])          # binome = (l[i],l[i+1])
+        resultat.append(binome)     # on ajoute le binome a la liste du résultat
+    
+    if len(l)%2 :   #si la liste a une longueur impaire on aura un résultat du type : [(0,1),(2,3)] (avec le dernier manquant)
+        last1,last2 = resultat[-1]     # on récupère le dernier élement
+        resultat[-1] = (last1, last2, l[-1]) #on rajoute le solitaire au dernier groupe pour former un trinome
+    
+    return [tuple(item) for item in resultat]
+
 txt = """Je vois là-bas un être sans tête qui grimpe à une perche sans fin.
 
 Tandis que je me promène, tentant de me délasser, d'atteindre ce fond de délassement qu'il est si difficile d'atteindre, qu'il est improbable, quoique ayant tellement
@@ -110,9 +123,12 @@ lui doive être plus haïssable encore.
 
 Henri Michaux"""
 
+elems = ['a', 'b', 'c', 'a', 'b', 'a', 'd', 'e']
+
 print("\nje compte le nombre de fois où 'le' apparait, 'e' apparait et renvoie le texte sans 'e'")
 le, e, res = countInText(txt)
 print(f"le : {le}, e : {e} , txt :\n{res}")
 data_to_json(txt)
 print(mot_les_plus_frequent(txt))
 print(mot_les_plus_frequent_nopronouns(txt))
+print(grouper_par_binome(elems))
