@@ -7,7 +7,7 @@ def nombre_de_chaque_lettres(mot): #prend en argument un mot
         compteur[letter] = mot.count(letter) #on enregistre le nombre d'occurence de la lettre
     return compteur #on renvoie le nombre
 
-def remplacer_par_e(mot): #prend en argument un mot
+def remplacer_par_e(mot, e): #prend en argument un mot
     #on récupère la lettre qui reviens le plus souvent
     nblettres = nombre_de_chaque_lettres(mot)
     freqMax=0
@@ -21,13 +21,13 @@ def remplacer_par_e(mot): #prend en argument un mot
     resultat = '' #on initialise un résultat
     for lettre in mot: #pour chaque lettre du mot
         if lettre == a_remplacer : #si on doit remplacer la lettre
-            resultat += 'e' #on la replace
+            resultat += e #on la replace
         else: # sinon
             resultat += lettre #on laisse la lettre d'origine
     return resultat #on retourne le resultat
 
 # Replace the max frequency letters with the letter 'e'
-def replaceLetters(chaine):
+def replaceLetters(chaine, e):
     lettreCount = nombre_de_chaque_lettres(chaine)
     maxFrequency = max(lettreCount.values()) #on récupère la fréquence de lettre à remplacer
     
@@ -39,13 +39,13 @@ def replaceLetters(chaine):
     
     # Replace each of these letters with 'e'
     for letter in lettersToReplace:
-        chaine = chaine.replace(letter, 'e')
+        chaine = chaine.replace(letter, e)
     
     return chaine
 
 mot='Mississippi'
-print("\nje remplace une des lettre qui revient le plus par 'e'",remplacer_par_e(mot))
-print("\nje remplace les lettre qui reviennent le plus par 'e'",replaceLetters(mot))
+print("\nje remplace une des lettre qui revient le plus par 'e'",remplacer_par_e(mot, 'e'))
+print("\nje remplace les lettre qui reviennent le plus par 'e'",replaceLetters(mot, 'e'))
 print("\nnombre de chaque lettres",nombre_de_chaque_lettres(mot))
 
 
