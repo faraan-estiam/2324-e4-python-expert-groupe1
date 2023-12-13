@@ -1,5 +1,6 @@
 #Faraan Rozbully; Lucas Cannizzaro; Nathan Schoepps; Matéo Oudart; Akbar Khan
 from pronoms import PRONOMS
+import json
 
 def nombre_de_chaque_lettres(mot): #prend en argument un mot
     compteur = {}   #on initialise un dictionaire vide
@@ -55,9 +56,7 @@ def countInText(txt):
     newTxt = txt.replace('e', '').replace('E','')
     return countStringLe, countLetterE, newTxt
 
-def data_to_json(txt:str) :
-    import json
-    global PRONOMS
+def data_to_json(txt) :
     path = "./data.json"
     txt = txt.lower()
     pronoms = {key:txt.count(f' {key} ') for key in PRONOMS}
@@ -67,7 +66,7 @@ def data_to_json(txt:str) :
     with open(path,'w') as file :
         json.dump(data,file)
 
-def mot_les_plus_frequent(txt:str):
+def mot_les_plus_frequent(txt):
     #on prépare le texte
     txt = txt.lower().translate(str.maketrans("'"," ",".,()"))
     #on met chaque mot dans une liste
@@ -80,14 +79,13 @@ def mot_les_plus_frequent(txt:str):
     freq = max(data.values())
     return list(filter(lambda key: data[key]==freq ,data)), freq
 
-def mot_les_plus_frequent_nopronouns(txt:str):
+def mot_les_plus_frequent_nopronouns(txt):
     #on prépare le texte
     txt = txt.lower().translate(str.maketrans("'"," ",".,()"))
     #on met chaque mot dans une liste
     arr = txt.split()
 
     #on compte les occurence des mots (sauf les pronoms)
-    global PRONOMS
     data = {word:arr.count(word) for word in list(filter(lambda word: word not in PRONOMS,set(arr)))}
     
     #on renvoie ceux qui reviennent le plus souvent ainsi que leur nombre d'occurence
@@ -123,7 +121,7 @@ lui doive être plus haïssable encore.
 
 Henri Michaux"""
 
-elems = ['a', 'b', 'c', 'a', 'b', 'a', 'd', 'e']
+elems = ['a', 'b', 'c', 'a', 'b', 'a', 'd', 'e', 'f']
 
 print("\nje compte le nombre de fois où 'le' apparait, 'e' apparait et renvoie le texte sans 'e'")
 le, e, res = countInText(txt)
